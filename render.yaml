@@ -1,0 +1,12 @@
+services:
+  - type: web
+    name: ar-hunt-backend
+    env: python
+    region: oregon
+    buildCommand: cd AR_Hunt/backend && pip install -r ../../requirements.txt
+    startCommand: cd AR_Hunt/backend && gunicorn ar_hunt_backend.wsgi:application --bind 0.0.0.0:$PORT
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.13.4
+      - key: DJANGO_SETTINGS_MODULE
+        value: ar_hunt_backend.settings
