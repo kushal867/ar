@@ -1,4 +1,5 @@
 services:
+  # Backend API Service
   - type: web
     name: ar-hunt-backend
     env: python
@@ -10,3 +11,15 @@ services:
         value: 3.13.4
       - key: DJANGO_SETTINGS_MODULE
         value: ar_hunt_backend.settings
+
+  # Frontend Web App Service
+  - type: web
+    name: ar-hunt-frontend
+    env: static
+    region: oregon
+    buildCommand: echo "No build needed for static site"
+    staticPublishPath: AR_Hunt/ictmela-arhunt
+    routes:
+      - type: rewrite
+        source: /*
+        destination: /index.html
