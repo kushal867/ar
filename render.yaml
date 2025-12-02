@@ -3,7 +3,7 @@ services:
     name: ar-hunt-backend
     env: python
     region: oregon
-    buildCommand: cd AR_Hunt/backend && pip install -r ../../requirements.txt
+    buildCommand: cd AR_Hunt/backend && pip install --upgrade pip && pip install -r ../../requirements.txt && python manage.py collectstatic --no-input && python manage.py migrate
     startCommand: cd AR_Hunt/backend && gunicorn ar_hunt_backend.wsgi:application --bind 0.0.0.0:$PORT
     envVars:
       - key: PYTHON_VERSION
