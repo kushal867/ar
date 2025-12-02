@@ -8,3 +8,4 @@ typing_extensions==4.15.0
 tzdata==2025.2
 python-dateutil==2.9.0.post0
 gunicorn
+whitenoise
